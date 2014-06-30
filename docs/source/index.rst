@@ -20,7 +20,10 @@ Contents:
    :numbered:
    :maxdepth: 2
 
+   How to contribute to KumarRobotics
    Setting up your build environment <references/env_setup>
+   Recommended Git workflow
+   Developing in ROS using an IDE <references/ide_setup>
 
 
 Indices and tables
