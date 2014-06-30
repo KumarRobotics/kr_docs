@@ -20,7 +20,7 @@ Contents:
    :numbered:
    :maxdepth: 2
 
-   How to contribute to KumarRobotics
+   How to contribute to KumarRobotics <references/contribute>
    Setting up your build environment <references/env_setup>
    Recommended Git workflow <references/git_workflow>
    Developing in ROS using an IDE <references/ide_setup>
