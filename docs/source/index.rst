@@ -21,6 +21,7 @@ Contents:
    :maxdepth: 2
 
    Setting up your build environment <references/env_setup>
+   Git workflow <references/git_workflow>
 
 
 Indices and tables
