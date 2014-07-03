@@ -1,5 +1,7 @@
 # kr_docs
 
-This repo is a collection of general documentation to consider when contributing to the KumarRobotics organization
+This repo is a collection of general documentation to consider when contributing to the KumarRobotics organization.
 
-View the documentation [here](http://kumar-robotics-github-documentation.readthedocs.org/en/latest/index.html).
+Click the following link to read the docs.
+
+[Kumar Robotics Github Documentation](http://kumar-robotics-github-documentation.readthedocs.org/en/latest/)
