@@ -68,3 +68,12 @@ c++11 features are enabled with the compiler switch: ``-std=c++11``. Adding this
 
 Updating to a newer version of Boost
 ------------------------------------
+
+ROS Hydro ships with Boost 1.43, which does not compile properly under c++11. It is recommended that you upgrade to Boost 1.54, the version included with ROS indigo.
+
+To do so, `download Boost 1.54 <http://www.boost.org/users/history/version_1_54_0.html>`_. Decompress the archive, then enter the resulting directory and run the ``bootstrap.sh`` and ``b2`` scripts, like so::
+
+  sudo ./bootstrap.sh
+  sudo ./b2 install
+
+Boost 1.54 should install without issue. More detailed instructions are included in the Boost download.
