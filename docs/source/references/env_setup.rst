@@ -53,7 +53,7 @@ You should then update the links in ``/usr/bin`` so that they point to the newer
   sudo update-alternatives --config gcc
   sudo update-alternatives --config g++
 
-You will then need to `update boost`_ in order to use the new compiler.
+You will then need to update boost to 1.54 in order to use the new compiler.
 
 Source: `ubuntuhandbook.org <http://ubuntuhandbook.org/index.php/2013/08/install-gcc-4-8-via-ppa-in-ubuntu-12-04-13-04/>`_
 
@@ -77,3 +77,28 @@ In order to access the necessary environment variables (``ROS_PACKAGE_PATH``, ``
 
 ROS packages in Qt Creator
 --------------------------
+
+To use Qt Creator with your ROS package. Create a new project with the ``File -> New File or Project`` action. Select the ``Import Project -> Import Existing Project``, as illustrated below:
+
+.. image:: ../images/qt_step1.png
+
+Assign your project a sensible name, and select the location as the package directory (in which your ``src`` directory resides):
+
+.. image:: /images/qt_step2.png
+
+You will be asked to import files. Select directories which contain headers and source files. When prompted to select project options, you should **NOT** add the IDE files to version control - these are specific to your machine.
+
+.. image:: /images/qt_step3.png
+
+Lastly, you must configure the Qt Creator build settings correctly. Navigate to  the ``Projects`` menu in the mode selector (accessible from ``Window -> Show Mode Selector``).
+
+Append ``build`` to the build directory (you may need to create this directory yourself). Then add a custom build step which performs the operation ``cmake ..`` (.. is the argument). You may also optionally add ``-j4`` to the make arguments in order to parallelize builds. See the image below for an example of valid settings.
+
+.. image:: /images/qt_step4.png
+
+If you wish for Qt Creator to index a set of headers that are not on the default path, add them to your ``.includes`` file in QtCreator. For example::
+
+  include
+  build/devel/include
+
+will index your project headers and generated project headers (such as messages).
