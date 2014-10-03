@@ -22,6 +22,7 @@ Contents:
 
    Recommended Git workflow <references/git_workflow>
    Setting up your build environment <references/env_setup>
+   Hardware <references/hardware>
    Common issues <references/common_issues>
 
 Indices and tables
