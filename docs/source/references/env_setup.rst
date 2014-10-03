@@ -64,16 +64,16 @@ c++11 features are enabled with the compiler switch: ``-std=c++11``. Adding this
 
   add_definitions("-std=c++11")
 
-.. _update boost:
+==========
+Qt Creator
+==========
 
-Updating to a newer version of Boost
-------------------------------------
+`Qt Creator <http://qt-project.org/wiki/category:tools::qtcreator>`_ is a fast, powerful and, cross-platform c++ development IDE. It is actively maintained by the `Digia <http://www.digia.com/>`_ corporation, and is freely available under the LGPL licensing scheme. Qt integrates easily with cmake projects, and offers an elegant GUI development toolkit for Qt - `the recommended platform <http://wiki.ros.org/rqt>`_ for building graphical ROS applications.
 
-ROS Hydro ships with Boost 1.43, which does not compile properly under c++11. It is recommended that you upgrade to Boost 1.54, the version included with ROS indigo.
+Launching Qt Creator
+--------------------
 
-To do so, `download Boost 1.54 <http://www.boost.org/users/history/version_1_54_0.html>`_. Decompress the archive, then enter the resulting directory and run the ``bootstrap.sh`` and ``b2`` scripts, like so::
+In order to access the necessary environment variables (``ROS_PACKAGE_PATH``, ``ROS_MASTER_URI``, etc) Qt Creator must be started from the command line. Alternatively, you can make a desktop launcher by following the instructions `here <http://wiki.ros.org/IDEs#QtCreator>`_.
 
-  sudo ./bootstrap.sh
-  sudo ./b2 install
-
-Boost 1.54 should install without issue. More detailed instructions are included in the Boost download.
+ROS packages in Qt Creator
+--------------------------
