@@ -21,9 +21,9 @@ For the following example we suppose the following directory structure exists::
 
 If you wanted to clone the `bluefox2 <https://github.com/KumarRobotics/bluefox2>`_ package and add it to your catkin workspace, you would do the following::
 
-  $ cd ~/Documents/code
-  $ git clone https://github.com/KumarRobotics/bluefox2
-  $ ln -s bluefox2 ~/Documents/catkin/src/bluefox2
+  cd ~/Documents/code
+  git clone https://github.com/KumarRobotics/bluefox2
+  ln -s bluefox2 ~/Documents/catkin/src/bluefox2
 
 Of course, you do not *have* to link to the root of a git repository. You can link to any folder which is itself a catkin package, or which contains catkin packages.
 
@@ -40,18 +40,20 @@ Setting up GCC 4.8 on Ubuntu 12.04
 
 The Ubuntu 12.04 (Precise) repositories do not contain a package for GCC 4.8. PPAs for `toolchain test <https://launchpad.net/~ubuntu-toolchain-r>`_ builds are available. In order to install ``gcc`` and ``g++`` version 4.8, execute the following commands::
 
-  $ sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-  $ sudo apt-get update
-  $ sudo apt-get install gcc-4.8 g++-4.8
+  sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+  sudo apt-get update
+  sudo apt-get install gcc-4.8 g++-4.8
 
 You should then update the links in ``/usr/bin`` so that they point to the newer version of gcc. This is achieved by executing::
 
-  s sudo update-alternatives --remove-all gcc
-  $ sudo update-alternatives --remove-all g++
-  $ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 20
-  $ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 20
-  $ sudo update-alternatives --config gcc
-  $ sudo update-alternatives --config g++
+  sudo update-alternatives --remove-all gcc
+  sudo update-alternatives --remove-all g++
+  sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 20
+  sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 20
+  sudo update-alternatives --config gcc
+  sudo update-alternatives --config g++
+
+You will then need to `update boost`_ in order to use the new compiler.
 
 Source: `ubuntuhandbook.org <http://ubuntuhandbook.org/index.php/2013/08/install-gcc-4-8-via-ppa-in-ubuntu-12-04-13-04/>`_
 
@@ -61,3 +63,17 @@ Enabling c++11 in CMake
 c++11 features are enabled with the compiler switch: ``-std=c++11``. Adding this option to your CMakeLists.txt file is very simple::
 
   add_definitions("-std=c++11")
+
+.. _update boost:
+
+Updating to a newer version of Boost
+------------------------------------
+
+ROS Hydro ships with Boost 1.43, which does not compile properly under c++11. It is recommended that you upgrade to Boost 1.54, the version included with ROS indigo.
+
+To do so, `download Boost 1.54 <http://www.boost.org/users/history/version_1_54_0.html>`_. Decompress the archive, then enter the resulting directory and run the ``bootstrap.sh`` and ``b2`` scripts, like so::
+
+  sudo ./bootstrap.sh
+  sudo ./b2 install
+
+Boost 1.54 should install without issue. More detailed instructions are included in the Boost download.
