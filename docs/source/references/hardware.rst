@@ -1,9 +1,9 @@
 Hardware
 ========
 
-=======
-Network
-=======
+======
+Common
+======
 
 Network Setup for robots
 ------------------------
@@ -40,16 +40,19 @@ Here are the steps for setting up ``wpa_supplicant``.
     wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 
 
-=========
+===========
+Computation
+===========
+
 Intel NUC
-=========
+---------
 
 `Intel NUC <http://www.intel.com/content/www/us/en/nuc/overview.html>`_ is a common computation platform being used at KumarRobotics. They are usually mounted on bigger platform such as `Pelican <http://www.asctec.de/en/uav-uas-drone-products/asctec-pelican/>`_ and `DJI S900/1000 <http://www.dji.com/product/spreading-wings-s900>`_.
 
 This page is dedicated to record problems and solutions that we encountered while working with the NUC.
 
 RecordFail
-----------
+~~~~~~~~~~
 
 If your NUC shutdown due to low battery power, then it will not boot up properly the next time. This is described in detail `here <https://bugs.launchpad.net/ubuntu/+source/grub2/+bug/872244>`_.
 
@@ -72,5 +75,13 @@ Here ``5`` is just a random number I pick. After this modification run ::
 
 Then reboot and verify that in ``boot/grub/grub.cfg`` the ``set timeout=-1`` has been successfully changed to ``set timeout=5``.
 
+Odroid
+------
 
+======
+Robots
+======
 
+=======
+Sensors
+=======
