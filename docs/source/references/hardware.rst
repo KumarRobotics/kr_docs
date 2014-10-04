@@ -8,7 +8,7 @@ Common
 Network Setup for robots
 ------------------------
 
-To ensure your robot has continuous and reliable network connection, you should use ``wpa_supplicant`` instead of Ubuntu's network manager (if you are using Ubuntu).
+To ensure your robot has continuous and reliable network connection, you should use ``wpa_supplicant`` if you don't have a display for the robot.
 
 Here are the steps for setting up ``wpa_supplicant``.
 
@@ -51,12 +51,12 @@ Intel NUC
 
 This page is dedicated to record problems and solutions that we encountered while working with the NUC.
 
-RecordFail
-~~~~~~~~~~
+Improper shutdown
+~~~~~~~~~~~~~~~~~
 
-If your NUC shutdown due to low battery power, then it will not boot up properly the next time. This is described in detail `here <https://bugs.launchpad.net/ubuntu/+source/grub2/+bug/872244>`_.
+If your NUC shutdowns due to low battery power, then it may not boot up properly the next time. This is described in detail `here <https://bugs.launchpad.net/ubuntu/+source/grub2/+bug/872244>`_.
 
-The reason why this is happening is because in ``/boot/grub/grub.cfg``, the following logic set the ``timeout`` to ``-1`` after a power failure. ::
+The reason why this is happening is because in ``/boot/grub/grub.cfg``, the following logic sets the ``timeout`` to ``-1`` after a power failure. ::
 
     if [ "${recordfail}" = 1 ] ; then
         set timeout=-1
@@ -65,11 +65,11 @@ The reason why this is happening is because in ``/boot/grub/grub.cfg``, the foll
 
 But we don't want to modify this file directly because it will be overwritten after every kernel update. The workaround to fix this problem is by setting a config variable ``GRUB_RECORDFAIL_TIMEOUT`` which will be read by ``/etc/grub.d/00_header``.
 
-Open ``/etc/default/grub``, add the following line in the file.::
+Open ``/etc/default/grub``, add the following line in the file. ::
 
     GRUB_RECORDFAIL_TIMEOUT=5
 
-Here ``5`` is just a random number I pick. After this modification run ::
+Here ``5`` is just a random number I picked. After this modification run ::
 
     sudo update-grub
 
