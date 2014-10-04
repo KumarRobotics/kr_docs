@@ -4,4 +4,4 @@ This repo is a collection of general documentation to consider when contributing
 
 Click the following link to read the docs.
 
-[Kumar Robotics Github Documentation](http://kumar-robotics-github-documentation.readthedocs.org/en/latest/)
+[Kumar Robotics Github Documentation](http://kumar-robotics-github-documentation.readthedocs.org/en/master/)
