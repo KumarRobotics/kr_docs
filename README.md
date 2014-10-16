@@ -6,7 +6,7 @@ Click the following link to read the docs.
 
 ### [Kumar Robotics Github Documentation](http://kumar-robotics-github-documentation.readthedocs.org/en/master/)
 
-## How to contribut
+## How to contribute
 
 Contributing to `kr_docs` is easy.
 
