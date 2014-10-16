@@ -21,4 +21,15 @@ make html
 xdg-open build/html/index.html
 ```
 
-You will see your latest changes locally..
+If you are using OSX and already have [Homebrew](http://brew.sh), simpliy do
+
+```
+brew install sphinx
+sudo pip install sphinx_rtd_theme
+git clone https://github.com/KumarRobotics/kr_docs.git
+cd kr_docs/docs
+make html
+open build/html/index.html
+```
+
+You will see your latest changes locally.
