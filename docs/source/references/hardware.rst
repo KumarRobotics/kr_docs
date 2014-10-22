@@ -5,7 +5,7 @@ Hardware
 Common
 ======
 
-Network Setup for robots
+Network Setup for Robots
 ------------------------
 
 To ensure your robot has continuous and reliable network connection, you should use ``wpa_supplicant`` if you don't have a display for the robot.
@@ -39,6 +39,10 @@ Here are the steps for setting up ``wpa_supplicant``.
     netmask 255.255.255.0
     wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 
+Bullet Setup
+------------
+
+For large-scale outdoor test, we need a reliable wifi connection between the robot and the ground station.
 
 ===========
 Computation
@@ -51,7 +55,7 @@ Intel NUC
 
 This page is dedicated to record problems and solutions that we encountered while working with the NUC.
 
-Improper shutdown
+Improper Shutdown
 ~~~~~~~~~~~~~~~~~
 
 If your NUC shutdowns due to low battery power, then it may not boot up properly the next time. This is described in detail `here <https://bugs.launchpad.net/ubuntu/+source/grub2/+bug/872244>`_.
@@ -74,6 +78,23 @@ Here ``5`` is just a random number I picked. After this modification run ::
     sudo update-grub
 
 Then reboot and verify that in ``boot/grub/grub.cfg`` the ``set timeout=-1`` has been successfully changed to ``set timeout=5``.
+
+Waiting for Network Configuration
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sometimes when you boot up Ubuntu, it will stuck at the booting screen for a long time saying it is waiting for network configuration. This can be annoying. Here's how to disable it.
+
+1. Open ``/etc/init/failsafe.conf``
+
+2. Change the first 3 ``sleep`` command to ``sleep x`` where ``x`` is some small value, like ``5``.
+
+3. Or if you don't want to wait at all, simply comment out the following lines. ::
+
+    $PLYMOUTH message --text="Waiting for network configuration..." || :
+    sleep 40
+
+    $PLYMOUTH message --text="Waiting up to 60 more seconds for network configuration..." || :
+    sleep 59
 
 Odroid
 ------
