@@ -75,7 +75,7 @@ Launching Qt Creator
 
 In order to access the necessary environment variables (``ROS_PACKAGE_PATH``, ``ROS_MASTER_URI``, etc) Qt Creator must be started from the command line. Alternatively, you can make a desktop launcher by following the instructions `here <http://wiki.ros.org/IDEs#QtCreator>`_.
 
-ROS packages in Qt Creator
+ROS Packages in Qt Creator
 --------------------------
 
 To use Qt Creator with your ROS package. Create a new project with the ``File -> New File or Project`` action. Select the ``Import Project -> Import Existing Project``, as illustrated below:
@@ -102,3 +102,22 @@ If you wish for Qt Creator to index a set of headers that are not on the default
   build/devel/include
 
 will index your project headers and generated project headers (such as messages).
+
+Better Qt Creator
+-----------------
+
+Themes
+~~~~~~
+
+Qt creator ships with aweful color schemes. You should change it to increase your productivity. Go get `qtcreator-themes <https://github.com/gareth-cross/qtcreator-themes>`_ for better color schemes.
+
+Beautifier
+~~~~~~~~~~
+
+Beautifier is QtCreator plugin that helps you format your code. It supports astyle, clang-format and uncrustify. We recommend using clang-format. To get clang-format, just do::
+
+    sudo apt-get install clang-format-3.5
+
+Go to ``Help`` -> ``About Plugins...``, under ``C++`` click ``Beautifier``. Then restart.
+
+After restart, go to ``Tools`` -> ``Options`` -> ``Beautifier``, and setup your clang-format.
