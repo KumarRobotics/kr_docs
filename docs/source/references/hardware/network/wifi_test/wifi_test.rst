@@ -39,6 +39,8 @@ The following images show comparision of airmax capacity, quality and signal str
 .. image:: signal_strength.png
    :scale: 60 %
 
+Note that even though Point D is significantly closer to base station than Point E, it experienced worse connection. That is because D is below A while E is on a bridge and above A.
+
 bandwidth
 ~~~~~~~~~
 
