@@ -1,5 +1,4 @@
-.. kr_docs documentation master file, created by
-   sphinx-quickstart on Mon Jun 23 16:42:18 2014.
+.. kr_docs documentation master file, created by sphinx-quickstart on Mon Jun 23 16:42:18 2014.
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
@@ -22,7 +21,7 @@ Contents:
 
    Recommended Git workflow <references/git_workflow>
    Setting up your build environment <references/env_setup>
-   Hardware <references/hardware>
+   Hardware <references/hardware/hardware>
    Common issues <references/common_issues>
 
 Indices and tables

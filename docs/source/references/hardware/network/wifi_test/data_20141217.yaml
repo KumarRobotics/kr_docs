@@ -1,0 +1,20 @@
+date: 20141217
+distance: [2, 60, 100, 150, 270, 350]
+---
+-
+    name: airmax_small_antenna
+    signal_strength: [-20, -55.8, -74.6, -84.2, -74.2, -82]
+    airmax_quality: [94.8, 03.8, 39.6, 32, 47.2, 37]
+    airmax_capacity: [41, 40.6, 5.8, 6.6, 6, 5]
+    bandwidth: [77.08, 69.04, 7.06, 5.78, 9.8, 2.42]
+-
+    name: airmax_medium_antenna
+    signal_strength: [-23.8, -67 ,-66.8, -82, -83, -80]
+    airmax_quality: [91.8, 82.4, 62.2, 39.6, 40.2, 45]
+    airmax_capacity: [36.8, 31, 16.6, 4.2, 2, 8]
+    bandwidth: [75.2, 65.28, 22.16, 0.566, 2.602, 4.17]
+-
+    name: intel_wifi
+    signal_strength: [-21.8, -43.8, -60.4, -61.6]
+    link_quality: [100, 95.2, 74.6, 69, 0, 0]
+    bandwidth: [73.2, 40.64, 0.394, 0.56, 0,0]
