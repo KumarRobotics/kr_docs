@@ -13,7 +13,7 @@ The test uses 1 base station, which is a bullet-M2HP with an EnGenius EAG-2408 a
 2. Bullet-M2HP with medium antenna
 3. Intel 7260HMW IEEE 802.11AC, dual-band, 2x2 Wi-Fi
 
-The bullets are connected to the base station via Airmax, while the Intel card is connected to the base station via normal wireless connection.
+The bullets are connected to the base station via Airmax, while the Intel card is connected to the base station via normal wireless connection. The `Channel Spectrum Width` is set to 40 MHz, which gives a max TX rate of 150 Mbps.
 
 .. image:: map.jpg
    :scale: 70 %
