@@ -5,23 +5,17 @@ Git Workflow
 Git Branching Model
 ===================
 
-At KumarRobotics, we use a simplified `git branching model <http://nvie.com/posts/a-successful-git-branching-model/>`_,  which is inspired by ``Tailmix/Redwood``.
-The central repository holds two main branches under ``origin``:
+For simplicity, we use `GitHub Flow <http://scottchacon.com/2011/08/31/github-flow.html>`_, which will be summarized here.
 
-- ``master``
-- ``develop``
+GitHub Flow
+-----------
 
-``master`` branch
------------------
-
-The ``origin/master`` is the main branch where the code of ``HEAD`` always reflects a *demo-ready* state. We treat the ``master`` branch as **read-only**, such that no code should be directly committed to it. Instead, the ``master`` branch moves forward only by merging from ``develop`` branch.
-
-``develop`` branch
-------------------
-
-The ``origin/develop`` is the main branch where the code of ``HEAD`` always reflects a *stable* state of development. You should not commit to ``develop`` directly as well. It advances by merging in pull requests from topic branches, after review.
-
-When the source code in the ``develop`` branch reaches a stable point and is ready to be released, all of the changes should be merged back into ``master`` and then tagged with a release number.
+- Anything in the ``master`` branch is deployable
+- To work on something new, create a descriptively named branch off the master (ie: ``feature/handle-frame-drops``)
+- Commit to that branch locally and regularly push your work to the same named branch on the server
+- When you need feedback or help, or you think the branch is ready for mergin, open a pull request
+- After someone else has reviewed and signed off on the feature, you can merge it into master
+- Once it is merged and pushed to `master`, you can and should deploy immediately
 
 
 Topic branches
@@ -39,11 +33,11 @@ We recommend using the following prefixes in branch names:
 Pull requests and code review
 -----------------------------
 
-We follow the `hared repository <https://help.github.com/articles/using-pull-requests>`_ model.
+We follow the `shared repository <https://help.github.com/articles/using-pull-requests>`_ model.
 You do not need to fork the repository. Simply use topic branches to sandbox new work.
 Use the following workflow for development:
 
-1. Create a topic branch off of ``develop`` for new work::
+1. Create a topic branch off of ``master`` for new work::
 
     $ git checkout -b fix/handle-frame-drops
 
@@ -55,7 +49,7 @@ Use the following workflow for development:
 
 4. When you are ready for a code review, or simply want some feedback, initiate a `pull request <https://help.github.com/articles/using-pull-requests>`_. Go to the repository that you are working on on Github, switch to your branch, and click the Pull Request button.
 
-5. Github defaults to merging into ``master``. Click the Edit button and change the merge target to ``develop``.
+5. Github defaults to merging into ``master``. You can click the Edit button and change the merge target to ``some-other-branch``.
 
 6. Get someone else to review your changes. Revise & iterate until convergence.
 
@@ -68,14 +62,14 @@ Use the following workflow for development:
     git checkout fix/handle-frame-drops
 
     # Make sure the branch is up-to-date and resolve any conflicts
-    git merge develop
+    git merge master
 
-    # Fast-forward develop, and update the server
-    git checkout develop
+    # Fast-forward master, and update the server
+    git checkout master
     git merge fix/handle-frame-drops
-    git push origin develop
+    git push origin master
 
-8. Optionally, tidy up defunct branches you do not inted to develop anymore.
+8. Optionally, tidy up defunct branches you do not intend to develop anymore.
 
   Delete local topic branch::
 
