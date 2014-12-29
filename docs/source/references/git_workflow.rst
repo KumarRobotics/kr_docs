@@ -17,6 +17,10 @@ GitHub Flow
 - After someone else has reviewed and signed off on the feature, you can merge it into master
 - Once it is merged and pushed to `master`, you can and should deploy immediately
 
+``Master`` branch
+-----------------
+
+The ``origin/master`` is the main branch where the code of ``HEAD`` always reflects a demo-ready state. We treat the ``master`` branch as `read-only`, such that no code should be directly committed to it. Instead, the ``master`` branch moves forward only by merging from topic branches.
 
 Topic branches
 --------------
