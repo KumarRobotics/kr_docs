@@ -43,6 +43,8 @@ Here are the steps for setting up ``wpa_supplicant``.
 
 2. The next time your power on your robot, it will automatically connect to the router you specified in ``wpa_supplicant.conf``. And if will reconnect even if you lose connection temporarily.
 
+3. A sample ``interfaces`` file can be found `here <https://gist.github.com/versatran01/9f42f24efa36b08f53d6>`_.
+
 =====================
 Outdoor Network Setup
 =====================
