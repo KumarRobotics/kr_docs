@@ -74,7 +74,7 @@ Access Point (Ground Station)
 
 7. In the first tab left to **MAIN**, select ``Enable`` for **airMAX**, then click **Change** and **Apply**. Notice that all the changes you made will be cancelled if you switch tab without applying those changes.
 
-8. In **WIRELESS** tab, make the folloing changes. The rest can be left as default.
+8. In **WIRELESS** tab, make the following changes. The rest can be left as default.
 
     +---------------+----------------------+ 
     | Item          | Value                |
@@ -158,6 +158,36 @@ Often, it is convenient to have internet access on your robot.
     gateway 192.168.1.200 # IP address of your laptop
     dns-nameservers 192.168.129.1 8.8.8.8  # for internet access
 
-2. Put the `this <https://gist.github.com/versatran01/f48122f30ff0ab5c5337>`_ bash function in your ``.bashrc``, then you can enable and disable sharing via ``sharenet on/off``.
+2. Put the following function in your ``.bashrc``, then you can enable and disable sharing via ``sharenet on/off``::
+
+    function sharenet()
+    {
+        if [ $# -eq 0 ]; then
+            echo "usage: sharenet <on/off>"
+            return 0
+        fi
+     
+        local if_from=wlan0
+        local if_to=eth0
+        # check command-line commands
+        cmd=$1
+        case $cmd in
+            on )
+                sudo su -c "echo 1 > /proc/sys/net/ipv4/ip_forward"
+                echo "Enable sharing internet from $if_from to $if_to"
+                sudo /sbin/iptables -A FORWARD -i $if_to -o $if_from -j ACCEPT
+                sudo /sbin/iptables -A FORWARD -i $if_from -o $if_to -m state --state RELATED,ESTABLISHED -j ACCEPT
+                sudo /sbin/iptables -t nat -A POSTROUTING -o $if_from -j MASQUERADE
+                ;;
+            off )
+                sudo su -c "echo 0 > /proc/sys/net/ipv4/ip_forward"
+                echo "Disable sharing internet from $if_from to $if_to"
+                ;;
+            * )
+                echo "sharenet: $1: invalid command"
+                echo "usage: sharenet <on/off>"
+                ;;
+        esac
+    }
 
 
