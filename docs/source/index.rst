@@ -11,18 +11,18 @@ This is the index for the KR github docs. This documentation will cover the foll
 * Recommended practices when developing in ROS.
 * Useful tips and tricks for streamlining your development process.
 
-The documentation is very much a work in progress and will continue to be updated as time goes by. Report inaccuracies to the maintainers [Chao and Gareth].
+The documentation is very much a work in progress and will continue to be updated as time goes by. Report inaccuracies to the maintainers [`Chao <quchao@seas.upenn.edu>`_ and `Gareth <gcross@seas.upenn.edu>`_].
 
 Contents:
 
 .. toctree::
-   :numbered:
-   :maxdepth: 2
+    :numbered:
+    :maxdepth: 2
 
-   Recommended Git workflow <references/git_workflow>
-   Setting up your build environment <references/env_setup>
-   Hardware <references/hardware/hardware>
-   Common issues <references/common_issues>
+    Software <references/software/software>
+    Hardware <references/hardware/hardware>
+    Setting up your build environment <references/env_setup>
+    Common issues <references/common_issues>
 
 Indices and tables
 ==================
