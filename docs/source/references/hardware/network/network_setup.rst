@@ -1,9 +1,9 @@
 Network Setup
 =============
 
-===============================
-Indoor Network Setup for Robots
-===============================
+====================
+Indoor Network Setup 
+====================
 
 To ensure your robot has continuous and reliable network connection, you should use ``wpa_supplicant`` if you don't have a display for the robot.
 

@@ -4,7 +4,7 @@ Hardware
 There are 4 sections under hardware
 
 .. toctree::
-  :maxdepth: 1
+  :maxdepth: 2
   
   Network <network/network>
   Computation <computation/computation>
