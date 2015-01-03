@@ -1,11 +1,10 @@
 Software
 ========
 
-There are 4 sections under software
-
 .. toctree::
   :maxdepth: 2
   
-  ROS <ros/ros>
+  C++ <cpp/cpp>
   Git <git_workflow>
-  C++ Style Guide <cpp_style>
+  ROS <ros/ros>
+  Test <test/test>
