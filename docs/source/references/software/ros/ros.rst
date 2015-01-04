@@ -6,4 +6,3 @@ ROS
   
   ROS Node <ros_node>
   Catkin <catkin>
-  Drivers <drivers>
