@@ -3,8 +3,7 @@ Software
 
 .. toctree::
   :maxdepth: 2
-  
+
   C++ <cpp/cpp>
   Git <git_workflow>
-  ROS <ros/ros>
   Test <test/test>

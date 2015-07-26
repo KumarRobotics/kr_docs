@@ -2,7 +2,7 @@ Network Setup
 =============
 
 ====================
-Indoor Network Setup 
+Indoor Network Setup
 ====================
 
 To ensure your robot has continuous and reliable network connection, you should use ``wpa_supplicant`` if you don't have a display for the robot.
@@ -19,7 +19,7 @@ Here are the steps for setting up ``wpa_supplicant``.
     fast_reauth=1
 
     network={
-        ssid="mrsl_airrouterhp"  # ssid of the router
+        ssid="mrsl_airrouterhp"
         scan_ssid=1
         key_mgmt=NONE
     }
@@ -29,10 +29,13 @@ Here are the steps for setting up ``wpa_supplicant``.
     auto lo
     iface lo inet loopback
 
-    auto wlan0               # auto start wlan0 interface
-    iface wlan0 inet static  # use static ip for wlan0
-    address 192.168.129.xyz  # your desired ip
-    gateway 192.168.129.1    # mrsl gateway
+    # auto start wlan0 interface
+    auto wlan0
+    # use static ip for wlan0
+    iface wlan0 inet static
+    # your desired ip
+    address 192.168.129.xyz
+    gateway 192.168.129.1
     netmask 255.255.255.0
     wpa-conf /etc/wpa_supplicant/wpa_supplicant.conf
 
@@ -41,9 +44,9 @@ Here are the steps for setting up ``wpa_supplicant``.
     address 192.168.1.abc
     netmask 255.255.255.0
 
-2. The next time your power on your robot, it will automatically connect to the router you specified in ``wpa_supplicant.conf``. And if will reconnect even if you lose connection temporarily.
+3. The next time your power on your robot, it will automatically connect to the router you specified in ``wpa_supplicant.conf``. And if will reconnect even if you lose connection temporarily.
 
-3. A sample ``interfaces`` file can be found `here <https://gist.github.com/versatran01/9f42f24efa36b08f53d6>`_.
+4. A sample ``interfaces`` file can be found `here <https://gist.github.com/versatran01/9f42f24efa36b08f53d6>`_.
 
 =====================
 Outdoor Network Setup
@@ -76,24 +79,24 @@ Access Point (Ground Station)
 
 8. In **WIRELESS** tab, make the following changes. The rest can be left as default.
 
-    +---------------+----------------------+ 
+    +---------------+----------------------+
     | Item          | Value                |
     +===============+======================+
     | Wireless Mode | Access Point         |
     +---------------+----------------------+
-    | SSID          | ubnt (anyname)       | 
+    | SSID          | ubnt (anyname)       |
     +---------------+----------------------+
     | Channel Width | 20 MHz (recommended) |
     +---------------+----------------------+
 
 9. In **NETWORK** tab, make the following changes.
 
-    +-----------------------+---------------+ 
+    +-----------------------+---------------+
     | Item                  | Value         |
     +=======================+===============+
     | Network Mode          | Bridge        |
     +-----------------------+---------------+
-    | Management IP address | Static        | 
+    | Management IP address | Static        |
     +-----------------------+---------------+
     | IP Address            | 192.168.1.20  |
     +-----------------------+---------------+
@@ -115,24 +118,24 @@ Station (Client)
 
 5. In **WIRELESS** tab, make the folloing changes. The rest can be left as default.
 
-    +---------------+-------------------+ 
+    +---------------+-------------------+
     | Item          | Value             |
     +===============+===================+
     | Wireless Mode | Station           |
     +---------------+-------------------+
-    | SSID          | ubnt (same as AP) | 
+    | SSID          | ubnt (same as AP) |
     +---------------+-------------------+
     | Channel Width | Auto 20/40 MHz    |
     +---------------+-------------------+
 
 6. In **NETWORK** tab, make the following changes. Note that **IP Address** should be something other than ``20`` and ``abc``.
 
-    +-----------------------+---------------+ 
+    +-----------------------+---------------+
     | Item                  | Value         |
     +=======================+===============+
     | Network Mode          | Bridge        |
     +-----------------------+---------------+
-    | Management IP address | Static        | 
+    | Management IP address | Static        |
     +-----------------------+---------------+
     | IP Address            | 192.168.1.21  |
     +-----------------------+---------------+
@@ -166,7 +169,7 @@ Often, it is convenient to have internet access on your robot.
             echo "usage: sharenet <on/off>"
             return 0
         fi
-     
+
         local if_from=wlan0
         local if_to=eth0
         # check command-line commands
@@ -189,5 +192,3 @@ Often, it is convenient to have internet access on your robot.
                 ;;
         esac
     }
-
-
