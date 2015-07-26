@@ -54,8 +54,9 @@ Summary
 =======
 
 It seems like the client's antenna size does not make a huge difference in coneection quality.
-If you are doing experiments in open space and within 100 meters, then you can probably get away with normal wireless connection.
-If your robot needs to go further away and you want to monitor its status, then you should switch to bullet airmax connection.
-If you need good connection even at more than 400 meters away, then you should buy a better bullet.
+
+* If you are doing experiments in open space and within 100 meters, then you can probably get away with normal wireless connection.
+* If your robot needs to go further away and you want to monitor its status, then you should switch to `Ubiquiti` **airMAX** connection.
+* If you need good connection even at more than 400 meters away, then you should buy a better station/antenna.
 
 We will do some more tests in 2015 in Biglervielle and California and will update this report later.
