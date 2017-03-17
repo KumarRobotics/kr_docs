@@ -7,3 +7,4 @@ Software
   C++ <cpp/cpp>
   Git <git_workflow>
   Test <test/test>
+  LaTeX <latex>
