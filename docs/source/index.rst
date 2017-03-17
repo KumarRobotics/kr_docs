@@ -11,7 +11,7 @@ This is the index for the KR github docs. This documentation will cover the foll
 * Recommended practices when developing in ROS.
 * Useful tips and tricks for streamlining your development process.
 
-The documentation is very much a work in progress and will continue to be updated as time goes by. Report inaccuracies to the maintainers [`Chao <quchao@seas.upenn.edu>`_ and `Gareth <gcross@seas.upenn.edu>`_].
+The documentation is very much a work in progress and will continue to be updated as time goes by. Report inaccuracies to the maintainer [`Chao <quchao@seas.upenn.edu>`_].
 
 Contents:
 
