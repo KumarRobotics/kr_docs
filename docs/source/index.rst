@@ -16,9 +16,9 @@ The documentation is very much a work in progress and will continue to be update
 Contents:
 
 .. toctree::
-    :numbered:
-    :maxdepth: 2
+    :maxdepth: 1
 
+    Suggested Reading <references/suggested_reading>
     Software <references/software/software>
     Hardware <references/hardware/hardware>
     Setting up your build environment <references/env_setup>

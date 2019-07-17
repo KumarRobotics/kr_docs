@@ -2,7 +2,7 @@ Software
 ========
 
 .. toctree::
-  :maxdepth: 2
+  :maxdepth: 1
 
   C++ <cpp/cpp>
   Git <git_workflow>
