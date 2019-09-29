@@ -11,3 +11,4 @@ There are 4 sections under hardware
   Computation <computation/computation>
   Robots <robot/robot>
   Sensors <sensor/sensor>
+  Thrust Stand <thrust_stand/thrust_stand>
