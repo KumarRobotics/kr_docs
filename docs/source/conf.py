@@ -37,14 +37,14 @@ if not on_rtd:  # only import and set the theme if we're building docs locally
 # ones.
 extensions = [
     'sphinx.ext.mathjax',
+    'recommonmark'
 ]
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
 
 # The suffix of source filenames.
-source_suffix = '.rst'
-
+source_suffix = ['.rst', '.md']
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
 
@@ -53,14 +53,14 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'kr_docs'
-copyright = u'2014, Kumar Robotics'
+copyright = u'2019, Kumar Robotics'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
 # built documents.
 #
 # The short X.Y version.
-version = '0'
+version = '0.1'
 # The full version, including alpha/beta/rc tags.
 release = '0'
 

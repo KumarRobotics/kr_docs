@@ -5,4 +5,5 @@ Computation
   :maxdepth: 1
   
   Intel NUC <nuc>
+  Pixhawk and NUC integration <pixhawk>
   Odroid <odroid>

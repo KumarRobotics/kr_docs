@@ -3,18 +3,19 @@ Thrust Stand Testing
 
 There comes a time in every engineer's life, when they must measure thrust coefficients and efficiency from propeller-motor combinations. This is that.
 
-=======================================
+=====================================================
 RC Benchmark Series 1580 Thrust Stand and Dynamometer
-=======================================
+=====================================================
 
 **Necessary hardware:**
 
 - RC Benchmark 1580 Board
-- RC Benchmark structure (including two 2kg load cells and one 5kg load cell) 
+- RC Benchmark structure (including two 2kg load cells and one 5kg load cell)
 - Calibration hardware (200g mass, beam, and screws)
 - Mini USB Type-B Cable
 - Computer with RC Benchmark software installed
-- Motor and Propeller 
+- Motor and Propeller
+
 - ESC (appropriately spec'd for motor/prop combo)
 - Power Supply (with appropriate voltage/current/power ratings)
 - Power Cables (stripped on one end)
@@ -22,7 +23,7 @@ RC Benchmark Series 1580 Thrust Stand and Dynamometer
 - Reflective tape
 - Optical Sensor and cable
 - 4x motor mounting screws
-- Corresponding screw driver 
+- Corresponding screw driver
 - 2x C-clamps
 
 
