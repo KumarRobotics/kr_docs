@@ -15,6 +15,7 @@ RC Benchmark Series 1580 Thrust Stand and Dynamometer
 - Mini USB Type-B Cable
 - Computer with RC Benchmark software installed
 - Motor and Propeller
+
 - ESC (appropriately spec'd for motor/prop combo)
 - Power Supply (with appropriate voltage/current/power ratings)
 - Power Cables (stripped on one end)
