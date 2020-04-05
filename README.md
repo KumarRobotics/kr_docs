@@ -13,7 +13,7 @@ Contributing to `kr_docs` is easy.
 If you are using Ubuntu, simply do:
 
 ```
-sudo apt-get install python-sphinx python-sphinx-rtd-theme python-recommonmark
+sudo apt install python-sphinx python-sphinx-rtd-theme python-recommonmark
 git clone https://github.com/KumarRobotics/kr_docs.git
 cd kr_docs/docs
 make html

@@ -17,7 +17,7 @@ The instructions for setting up Snapdragon Flight boards can be found |snav_link
 
 .. |snav_link| raw:: html
 
-   <a href="https://github.com/tdinesh/snavquad_interface/tree/devel_fixes" target="_blank">here</a>
+   <a href="https://github.com/tdinesh/snavquad_interface" target="_blank">here</a>
 
 ====================
 Clearpath Jackal

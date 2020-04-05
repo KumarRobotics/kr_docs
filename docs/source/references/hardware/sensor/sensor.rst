@@ -2,6 +2,16 @@ Sensor
 ======
 
 =======================================
+Calibration
+=======================================
+
+A good tutorial on calibration |sensor_calibration|
+
+.. |sensor_calibration| raw:: html
+
+   <a href="https://docs.openvins.com/gs-calibration.html" target="_blank">Sensor Calibration</a>
+
+=======================================
 Serial Devices Permission and Ownership
 =======================================
 

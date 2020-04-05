@@ -11,6 +11,14 @@ Ubuntu
 
 Most software for UAVs and robots in lab runs on Ubuntu 18.04 LTS. Please install this particular version, a lot of other software specifically depends on it. We strongly suggest to install a native system, don't virtualize. Do not use Virtual Box, although it works fine, the drop in performance is really noticeable, especially when simulating a real-time flying drone.
 
+- |unix_tutorial|
+
+.. |unix_tutorial| raw:: html
+
+   <a href="http://www.ee.surrey.ac.uk/Teaching/Unix/" target="_blank">Unix Tutorial</a>
+
+
+
 ===================
 Bash
 ===================
