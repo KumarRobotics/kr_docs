@@ -1,0 +1,214 @@
+diff --git a/src/geometry/tf/CMakeLists.txt b/src/geometry/tf/CMakeLists.txt
+index 8a91968..11bf09e 100644
+--- a/src/geometry/tf/CMakeLists.txt
++++ b/src/geometry/tf/CMakeLists.txt
+@@ -1,17 +1,7 @@
+ cmake_minimum_required(VERSION 3.0.2)
+ project(tf)
+ 
+-include(CheckCXXCompilerFlag)
+-unset(COMPILER_SUPPORTS_CXX11 CACHE)
+-if(MSVC)
+-  # https://docs.microsoft.com/en-us/cpp/build/reference/std-specify-language-standard-version
+-  # MSVC has c++14 enabled by default, no need to specify c++11
+-else()
+-  check_cxx_compiler_flag(-std=c++11 COMPILER_SUPPORTS_CXX11)
+-  if(COMPILER_SUPPORTS_CXX11)
+-    add_compile_options(-std=c++11)
+-  endif()
+-endif()
++add_compile_options(-std=c++17)
+ 
+ find_package(catkin REQUIRED COMPONENTS
+     angles
+diff --git a/src/kdl_parser/kdl_parser/CMakeLists.txt b/src/kdl_parser/kdl_parser/CMakeLists.txt
+index ee7779b..bef842b 100644
+--- a/src/kdl_parser/kdl_parser/CMakeLists.txt
++++ b/src/kdl_parser/kdl_parser/CMakeLists.txt
+@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.7.2)
+ 
+ project(kdl_parser)
+ 
+-set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+ find_package(catkin QUIET
+diff --git a/src/laser_filters/CMakeLists.txt b/src/laser_filters/CMakeLists.txt
+index da378ee..7158e7c 100644
+--- a/src/laser_filters/CMakeLists.txt
++++ b/src/laser_filters/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ cmake_minimum_required(VERSION 3.0.2)
+ project(laser_filters)
+ 
+-set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_STANDARD 17)
+ 
+ ##############################################################################
+ # Find dependencies
+diff --git a/src/laser_geometry/CMakeLists.txt b/src/laser_geometry/CMakeLists.txt
+index cdf46ae..4c01f9c 100644
+--- a/src/laser_geometry/CMakeLists.txt
++++ b/src/laser_geometry/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ cmake_minimum_required(VERSION 3.0.2)
+ project(laser_geometry)
+ 
+-set(CMAKE_CXX_STANDARD 11)
++set(CMAKE_CXX_STANDARD 17)
+ 
+ find_package(catkin REQUIRED
+     COMPONENTS
+diff --git a/src/resource_retriever/CMakeLists.txt b/src/resource_retriever/CMakeLists.txt
+index 359c9e8..0cec769 100644
+--- a/src/resource_retriever/CMakeLists.txt
++++ b/src/resource_retriever/CMakeLists.txt
+@@ -1,7 +1,7 @@
+ cmake_minimum_required(VERSION 3.0.2)
+ project(resource_retriever)
+ 
+-set_directory_properties(PROPERTIES COMPILE_OPTIONS "-std=c++11")
++set_directory_properties(PROPERTIES COMPILE_OPTIONS "-std=c++17")
+ 
+ find_package(catkin REQUIRED COMPONENTS rosconsole roslib)
+ 
+diff --git a/src/robot_state_publisher/CMakeLists.txt b/src/robot_state_publisher/CMakeLists.txt
+index 943254c..bb61704 100644
+--- a/src/robot_state_publisher/CMakeLists.txt
++++ b/src/robot_state_publisher/CMakeLists.txt
+@@ -15,11 +15,7 @@ if(MSVC)
+   # MSVC does not support the Wextra flag
+   add_compile_options(/Wall)
+ else()
+-  check_cxx_compiler_flag(-std=c++11 COMPILER_SUPPORTS_CXX11)
+-  if(COMPILER_SUPPORTS_CXX11)
+-    add_compile_options(-std=c++11)
+-  endif()
+-  add_compile_options(-Wall -Wextra)
++  add_compile_options(-std=c++17 -Wall -Wextra)
+ endif()
+ 
+ find_package(orocos_kdl REQUIRED)
+diff --git a/src/rosconsole/src/rosconsole/impl/rosconsole_log4cxx.cpp b/src/rosconsole/src/rosconsole/impl/rosconsole_log4cxx.cpp
+index 9018312..1d6f667 100644
+--- a/src/rosconsole/src/rosconsole/impl/rosconsole_log4cxx.cpp
++++ b/src/rosconsole/src/rosconsole/impl/rosconsole_log4cxx.cpp
+@@ -127,6 +127,8 @@ protected:
+   }
+ };
+ 
++LOG4CXX_PTR_DEF(ROSConsoleStdioAppender);
++
+ void initialize()
+ {
+   // First set up some sane defaults programmatically.
+@@ -166,7 +168,7 @@ void initialize()
+   }
+ 
+   log4cxx::LoggerPtr logger = log4cxx::Logger::getLogger(ROSCONSOLE_ROOT_LOGGER_NAME);
+-  logger->addAppender(new ROSConsoleStdioAppender);
++  logger->addAppender(ROSConsoleStdioAppenderPtr(new ROSConsoleStdioAppender()));
+ #ifdef _MSC_VER
+   if ( ros_root_cstr != NULL ) {
+ 	  free(ros_root_cstr);
+@@ -200,7 +202,7 @@ bool isEnabledFor(void* handle, ::ros::console::Level level)
+ 
+ void* getHandle(const std::string& name)
+ {
+-  return log4cxx::Logger::getLogger(name);
++  return log4cxx::Logger::getLogger(name).get();
+ }
+ 
+ std::string getName(void* handle)
+@@ -216,7 +218,7 @@ std::string getName(void* handle)
+ 
+ bool get_loggers(std::map<std::string, levels::Level>& loggers)
+ {
+-  log4cxx::spi::LoggerRepositoryPtr repo = log4cxx::Logger::getLogger(ROSCONSOLE_ROOT_LOGGER_NAME)->getLoggerRepository();
++  log4cxx::spi::LoggerRepositoryPtr repo = log4cxx::Logger::getLogger(ROSCONSOLE_ROOT_LOGGER_NAME)->getLoggerRepository().lock();
+ 
+   log4cxx::LoggerList current_loggers = repo->getCurrentLoggers();
+   log4cxx::LoggerList::iterator it = current_loggers.begin();
+@@ -352,20 +354,21 @@ protected:
+   ros::console::LogAppender* appender_;
+ };
+ 
++LOG4CXX_PTR_DEF(Log4cxxAppender);
+ Log4cxxAppender* g_log4cxx_appender = 0;
+ 
+ void register_appender(LogAppender* appender)
+ {
+   g_log4cxx_appender = new Log4cxxAppender(appender);
+   const log4cxx::LoggerPtr& logger = log4cxx::Logger::getLogger(ROSCONSOLE_ROOT_LOGGER_NAME);
+-  logger->addAppender(g_log4cxx_appender);
++  logger->addAppender(Log4cxxAppenderPtr(g_log4cxx_appender));
+ }
+ 
+ void deregister_appender(LogAppender* appender){
+   if(g_log4cxx_appender->getAppender() == appender)
+   {
+     const log4cxx::LoggerPtr& logger = log4cxx::Logger::getLogger(ROSCONSOLE_ROOT_LOGGER_NAME);
+-    logger->removeAppender(g_log4cxx_appender);
++    logger->removeAppender(Log4cxxAppenderPtr(g_log4cxx_appender));
+     delete g_log4cxx_appender;
+     g_log4cxx_appender = 0;
+   }
+@@ -375,7 +378,7 @@ void shutdown()
+   if(g_log4cxx_appender)
+   {
+     const log4cxx::LoggerPtr& logger = log4cxx::Logger::getLogger(ROSCONSOLE_ROOT_LOGGER_NAME);
+-    logger->removeAppender(g_log4cxx_appender);
++    logger->removeAppender(Log4cxxAppenderPtr(g_log4cxx_appender));
+     g_log4cxx_appender = 0;
+   }
+   // reset this so that the logger doesn't get crashily destroyed
+@@ -383,7 +386,7 @@ void shutdown()
+   //
+   // See https://code.ros.org/trac/ros/ticket/3271
+   //
+-  log4cxx::Logger::getRootLogger()->getLoggerRepository()->shutdown();
++  log4cxx::Logger::getRootLogger()->getLoggerRepository().lock()->shutdown();
+ }
+ 
+ } // namespace impl
+diff --git a/src/rqt_image_view/CMakeLists.txt b/src/rqt_image_view/CMakeLists.txt
+index 62c286c..997cc66 100644
+--- a/src/rqt_image_view/CMakeLists.txt
++++ b/src/rqt_image_view/CMakeLists.txt
+@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0.2)
+ 
+ project(rqt_image_view)
+ 
+-add_compile_options(-std=c++11)
++add_compile_options(-std=c++17)
+ 
+ # Load catkin and all dependencies required for this package
+ find_package(catkin REQUIRED COMPONENTS rqt_gui rqt_gui_cpp image_transport sensor_msgs geometry_msgs cv_bridge)
+diff --git a/src/rviz/CMakeLists.txt b/src/rviz/CMakeLists.txt
+index 23719c1..eb774dd 100644
+--- a/src/rviz/CMakeLists.txt
++++ b/src/rviz/CMakeLists.txt
+@@ -8,7 +8,7 @@ if (POLICY CMP0054)
+   cmake_policy(SET CMP0054 NEW)
+ endif()
+ 
+-set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ set(CMAKE_CXX_EXTENSIONS OFF)
+ 
+diff --git a/src/urdf/urdf/CMakeLists.txt b/src/urdf/urdf/CMakeLists.txt
+index 2741c61..d9acc12 100644
+--- a/src/urdf/urdf/CMakeLists.txt
++++ b/src/urdf/urdf/CMakeLists.txt
+@@ -22,7 +22,7 @@ set(generated_compat_header "${CATKIN_DEVEL_PREFIX}/include/${PROJECT_NAME}/urdf
+ include_directories("${CATKIN_DEVEL_PREFIX}/include")
+ configure_file(urdfdom_compatibility.h.in "${generated_compat_header}" @ONLY)
+ 
+-set(CMAKE_CXX_STANDARD 14)
++set(CMAKE_CXX_STANDARD 17)
+ set(CMAKE_CXX_STANDARD_REQUIRED ON)
+ 
+ catkin_package(
+
